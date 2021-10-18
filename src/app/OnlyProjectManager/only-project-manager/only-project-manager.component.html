@@ -1,0 +1,75 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']">UEPFeedback</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+          <ul class="navbar-nav flex-grow">
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()" >Logout</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<h1 class="page-title">Project Feedbacks</h1>
+<br>
+<div class="container" >
+    <div class="row">
+        <table class="table">
+            <tr bgcolor="#f9f9f9">
+              <th style="padding: 0.5vw;">EmployeeComments</th>
+              <th style="padding: 0.5vw;">Ratings</th>
+              <th style="padding: 0.5vw;">ProjectManagerComments</th>
+              <th style="padding: 0.5vw;">CompetencyManagerComments</th>
+              <th style="padding: 0.5vw;">Questionid</th>
+              <th style="padding: 0.5vw;">EmployeeResponce</th>
+            </tr>
+            <tr ng-form="myform" *ngFor="let details of feedbacks" style="border: 1px solid;">
+              <td>
+                {{ details.employeeComments }}
+              </td>
+              <td>
+                {{ details.ratings }}
+              </td>
+              <td>
+                <div class="row">
+                    <div class="col-6">{{ details.projectManagerComments }}</div>
+                    <div class="col-6"><button type="button" class="btn-warning btn-default" (click)="triggerModal(modalData)">Edit</button></div>
+                </div>
+               
+              </td>
+              <td>
+                {{ details.competencyManagerComments }}
+              </td>
+              <td>
+                  {{ details.questionid }}
+                </td>
+                <td>
+                  {{ details.employeeResponse }}
+                </td>
+                <ng-template #modalData let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Project Manager Comments</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                          <label #id [hidden]="true">{{details.fK_Employeeid}}</label>
+                            <input type="text" #PMcomments [(ngModel)]="details.projectManagerComments" placeholder="Add Comments" style="width: 100%">
+                          </div>
+                          <button type="button" class="btn btn-primary" (click)="Submit(details.fK_Employeeid,PMcomments.value)">Submit</button>
+                  </ng-template>
+            </tr>
+          </table>
+    </div>
+</div>

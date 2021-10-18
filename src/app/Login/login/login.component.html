@@ -1,0 +1,22 @@
+<body>
+<div class="container" style="padding: 4vw;">
+<div class="row" style="justify-content: center;">
+      <div class="col-6">
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+            <h1 class="page-title" style="text-align: center;padding-bottom: 1vw;">Login</h1>
+            <div class="form-group">
+              <label>UserName</label>
+              <input #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName" class="form-control" placeholder="UserName" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" class="form-control" placeholder="Password" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+          </form>
+      </div>
+</div>
+</div>
+</body>

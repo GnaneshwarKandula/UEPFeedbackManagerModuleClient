@@ -1,0 +1,64 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">UEPFeedback</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <button class="btn btn-danger my-2 my-sm-0"(click)="onLogout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<h1 class="page-title">Admin Page</h1>
+<br>
+
+<table class="table">
+  <tr bgcolor="#f9f9f9">
+    <th>EmployeeId</th>
+    <th>Username</th>
+    <th>Designation</th>
+    <th>EmailID</th>
+    <th>Password</th>
+    <th>ProjectName</th>
+    <th>ProjectId</th>
+    <th>ProjectManager</th>
+  </tr>
+
+  <tr *ngFor="let details of userdetails" style="border: 1px solid;">
+    <td>
+      {{ details.pK_Employeeid }}
+    </td>
+    <td>
+      {{ details.username }}
+    </td>
+    <td>
+      {{ details.designation }}
+    </td>
+    <td>
+      {{ details.emailid }}
+    </td>
+    <td>
+      {{ details.password }}
+    </td>
+    <td>
+      {{ details.projectname }}
+    </td>
+    <td>
+      {{ details.projectid }}
+    </td>
+    <td>
+      {{ details.projectmanager }}
+    </td>
+  </tr>
+</table>
